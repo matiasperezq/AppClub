@@ -1,0 +1,226 @@
+:root {
+    --verde-osc: #1b5e20;
+    --verde: #2e7d32;
+    --verde-cl: #e8f5e9;
+    --fondo: #f1f5f1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    background: var(--fondo);
+    color: #222;
+}
+
+/* ---------- Menu superior ---------- */
+.menu {
+    background: var(--verde-osc);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 24px;
+    height: 56px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+}
+.menu a {
+    color: #fff;
+    text-decoration: none;
+}
+.marca {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.enlaces {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+}
+.enlaces a, .sesion a {
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+.enlaces a:hover, .sesion a:hover {
+    background: var(--verde);
+}
+.sesion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #c8e6c9;
+    font-size: 14px;
+}
+
+/* ---------- Contenido ---------- */
+.contenedor {
+    max-width: 900px;
+    margin: 24px auto;
+    background: #fff;
+    padding: 24px 28px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
+}
+h1 {
+    color: var(--verde-osc);
+    margin-top: 0;
+}
+h2 {
+    color: var(--verde);
+}
+a {
+    color: var(--verde-osc);
+}
+
+/* ---------- Tablas ---------- */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+}
+th {
+    background: var(--verde-osc);
+    color: #fff;
+}
+th, td {
+    border: 1px solid #d5ddd5;
+    padding: 9px;
+    text-align: left;
+}
+tr:nth-child(even) {
+    background: #f3f7f3;
+}
+
+/* ---------- Formularios ---------- */
+.formulario {
+    max-width: 380px;
+}
+.formulario label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+}
+.formulario input[type="text"], .formulario input[type="email"],
+.formulario input[type="password"], .formulario select {
+    width: 100%;
+}
+.formulario input[type="submit"] {
+    margin-top: 16px;
+}
+
+/* ---------- Botones chicos para las tablas ---------- */
+.boton.chico {
+    padding: 4px 10px;
+    font-size: 13px;
+}
+.boton.peligro {
+    background: #c62828;
+}
+.boton.peligro:hover {
+    background: #8e0000;
+}
+
+/* ---------- Botones y formularios ---------- */
+.boton, input[type="submit"] {
+    display: inline-block;
+    background: var(--verde);
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+.boton:hover, input[type="submit"]:hover {
+    background: var(--verde-osc);
+}
+
+.boton.claro {
+    background: var(--verde-cl);
+    color: var(--verde-osc);
+    border: 1px solid #a5d6a7;
+}
+.boton.claro:hover {
+    background: #c8e6c9;
+}
+
+input[type="text"], input[type="email"], input[type="password"],
+input[type="date"], select {
+    padding: 7px;
+    margin: 4px 0;
+    border: 1px solid #b7c4b7;
+    border-radius: 4px;
+}
+
+/* ---------- Mensajes ---------- */
+.ok    {
+    background: #e8f5e9;
+    color: #1b5e20;
+    padding: 10px 14px;
+    border-radius: 4px;
+    border-left: 4px solid var(--verde);
+}
+.error {
+    background: #ffebee;
+    color: #b71c1c;
+    padding: 10px 14px;
+    border-radius: 4px;
+    border-left: 4px solid #c62828;
+}
+
+/* ---------- Etiquetas de estado ---------- */
+.badge {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+}
+.proxima    {
+    background: #c8e6c9;
+    color: var(--verde-osc);
+}
+.finalizada {
+    background: #eeeeee;
+    color: #666;
+}
+.ocupado    {
+    background: #ffcdd2;
+    color: #b71c1c;
+}
+
+/* ---------- Tarjetas del inicio ---------- */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+.tarjeta {
+    display: block;
+    padding: 22px;
+    background: var(--verde-cl);
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--verde-osc);
+    font-weight: bold;
+    text-align: center;
+}
+.tarjeta:hover {
+    background: #c8e6c9;
+}
+.tarjeta span {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 6px;
+}
+
+.pie {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    margin: 20px;
+}
