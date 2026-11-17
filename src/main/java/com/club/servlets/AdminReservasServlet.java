@@ -1,6 +1,8 @@
 package com.club.servlets;
 
 import com.club.entidades.Reserva;
+import com.club.sesiones.CanchaFacade;
+import com.club.sesiones.DeporteFacade;
 import com.club.sesiones.ReservaFacade;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
@@ -23,13 +25,37 @@ public class AdminReservasServlet extends HttpServlet {
     @EJB
     private ReservaFacade reservaFacade;
 
+    @EJB
+    private DeporteFacade deporteFacade;
+
+    @EJB
+    private CanchaFacade canchaFacade;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Reserva> reservas = reservaFacade.findTodas();
+        // Filtros opcionales: si no llegan (o vienen vacios), quedan en null
+        String fechaStr = request.getParameter("fecha");
+        String deporteStr = request.getParameter("deporte");
+        String canchaStr = request.getParameter("cancha");
 
-        // ids de las reservas que todavia no empezaron
+        java.sql.Date fecha = null;
+        if (fechaStr != null && !fechaStr.isEmpty()) {
+            fecha = java.sql.Date.valueOf(LocalDate.parse(fechaStr));
+        }
+        Integer deporteId = null;
+        if (deporteStr != null && !deporteStr.isEmpty()) {
+            deporteId = Integer.valueOf(deporteStr);
+        }
+        Integer canchaId = null;
+        if (canchaStr != null && !canchaStr.isEmpty()) {
+            canchaId = Integer.valueOf(canchaStr);
+        }
+
+        List<Reserva> reservas = reservaFacade.findFiltradas(fecha, deporteId, canchaId);
+
+        // ids de las reservas que todavia no empezaron (las "proximas")
         Set<Integer> proximas = new HashSet<>();
         for (Reserva r : reservas) {
             if (esFutura(r)) {
@@ -39,6 +65,8 @@ public class AdminReservasServlet extends HttpServlet {
 
         request.setAttribute("reservas", reservas);
         request.setAttribute("proximas", proximas);
+        request.setAttribute("deportes", deporteFacade.findAll());   // para el filtro de deporte
+        request.setAttribute("canchas", canchaFacade.findAll());     // para el filtro de cancha
         request.getRequestDispatcher("/WEB-INF/vista/reserva/todas.jsp").forward(request, response);
     }
 

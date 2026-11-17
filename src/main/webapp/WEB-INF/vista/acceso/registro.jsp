@@ -10,8 +10,9 @@
     <body>
         <jsp:include page="/WEB-INF/vista/menu.jsp"/>
 
-        <div class="contenedor">
-            <h1>Registro de socio</h1>
+        <div class="contenedor auth">
+            <h1>Crear cuenta</h1>
+            <p class="subtitulo">Registrate como socio del club</p>
 
             <c:if test="${not empty error}">
                 <p class="error">${error}</p>
@@ -30,7 +31,7 @@
                 <input type="submit" value="Registrarme">
             </form>
 
-            <p>¿Ya tenés cuenta? <a href="Login">Iniciá sesión</a></p>
+            <p class="pie-form">¿Ya tenés cuenta? <a href="Login">Iniciá sesión</a></p>
         </div>
     </body>
 </html>
